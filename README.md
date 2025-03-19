@@ -24,8 +24,6 @@ preference on Netflix into most highly regarded series according to Rotten Tomat
 also be helpful for viewers, content creators, and Netflix itself in making informed decisions about the types
 of series to watch, produce, or promote.
 
-3. **Personal Project** – *(E-commerce Sales Analysis)*  
-
 ---
 
 ## **🎓 Education**
