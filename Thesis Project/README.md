@@ -1,5 +1,5 @@
 # Master-Thesis-Project
-Explore weight loss discussions and sentiments on Reddit
+Explore weight loss discussions and sentiments on Reddit during the pandemic
 
 # Overview
 This study investigates the weight loss discussions and sentiments on Reddit during the COVID-19
