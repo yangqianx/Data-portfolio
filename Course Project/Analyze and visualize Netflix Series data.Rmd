@@ -1,0 +1,183 @@
+---
+title: "Projec 01 - The 100 Best Netflix Series in Rotten Tomatoes"
+author: "Yang QIAN"
+date: "2023-04-18"
+output: pdf_document
+---
+
+```{r setup, include=FALSE, echo=FALSE, message=FALSE, error=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction 
+
+The project involves scraping data from the webpage titled "100 Best Netflix Series to watch right now (May 2023)" on Rotten Tomatoes which is a polpular website that provides aggregated reviews and ratings for movies and TV shows. The specific URL of the webpage is "https://editorial.rottentomatoes.com/guide/best-netflix-shows-and-movies-to-binge-watch-now/". This webpage focuses on the Netflix series, which contains a list of the top 100 series as recommended by Rotten Tomatoes. Each series entry includes information such as the title, genre, year of release, actor, ranking etc. 
+
+By extracting the above information about the Netflix series listed on the webpage, a comprehensive data set of the top 100 Netflix series is gathered to analyze the genre popularity and understand the audience preference on Netflix into most highly regarded series according to Rotten Tomatoes. Furthermore, it can also be helpful for viewers, content creators, and Netflix itself in making informed decisions about the types of series to watch, produce, or promote.
+
+## Implementation of the crawler
+
+In the implementation of the web scraper, I first identified the specific information I wanted to gather from the webpage, which includes the title, year, genre, ranking, tMeterScore, actors, and links for each movie. By inspecting the webpage, I observed that most of this information is presented in a structured format, making it feasible to extract through web scraping techniques.
+
+**Web Scrape**
+
+For this project, I followed a process in three steps: extracting the data, cleaning and manipulating the data, and creating visualizations to analyze the genre distribution and gain insights. By utilizing R programming, I could extract the information from the Rotten Tomatoes webpage, clean and transform the data as necessary, and then generate visualizations to explore the genre distribution and other relevant patterns.
+
+**Data Extraction**
+
+For the data extraction process, I used the "httr" and "xml2" packages in R. First, I used the "GET" function from the "httr" package to send an HTTP GET request to the target webpage. This request fetched the HTML content of the webpage.
+
+```{r, results='hide'}
+
+library(httr)
+library(XML)
+
+# Send a GET request to the rottentomatoes webpage
+url <- "https://editorial.rottentomatoes.com/guide/best-netflix-shows-and-movies-to-binge-watch-now/"
+response <- GET(url)
+
+# Parse the HTML content of the webpage
+html <- htmlParse(response)
+
+```
+
+Then I specified XPath expressions to extract specific elements of interest from the HTML content by using the "xpathSApply" function from the "xml2" package. These elements included the series' titles, years, actors, links, rankings and tMeterScores.
+
+```{r}
+
+# Extract the Netflix series' title, year, actor, link, ranking and tMeterScore.
+
+# Extract the series' title
+title <- xpathSApply(html, "//div[@class='article_movie_title']/h2/a", xmlValue)
+
+# Extract the series' year
+year <- xpathSApply(html, "//div[@class='article_movie_title']/h2/span[@class='subtle start-year']", xmlValue)
+
+# Extract the series' actor
+actor <- xpathSApply(html, "//div[@class='info cast']", xmlValue)
+
+# Extract the series' link
+links <- xpathSApply(html, "//div[@class='article_movie_title']/h2/a/@href")
+
+# Extract the series' ranking
+ranking <- xpathSApply(html, "//div[@class='countdown-index']", xmlValue)
+
+# Extract the series' tMeterScore
+tMeterScore <- xpathSApply(html, "//div[@class='article_movie_title']/h2/span[@class='tMeterScore']", xmlValue)
+
+```
+
+Since the genre is not directly available on the main webpage but rather on the subpage of each movie, an additional step is required to scrape the genre information for each series. To do this, a two-step process would be implemented. First, it is necessary to clean and manipulate the data, specifically the links of each movie. This ensures that the links are in a suitable format for further scraping. Once the links are cleaned, a for loop can be created to automate the scraping process. Then the genre information for each movie can be scraped automatically which saved time and effort.
+
+**Data Manipulation**
+
+After extracting the information from the main webpage, the next step is to clean and transform the data into a structured format that is suitable for analysis. This involves performing various data manipulation tasks on specific variables such as year, actor, and link for each movie. By cleaning and transforming the data, it becomes more organized and suitable for further analysis.
+
+```{r, results='hide'}
+
+# Use regexes to clean the data
+
+# Clean the year data
+year <- gsub("\\D", "", year) # remove the parentheses of the year
+year <- as.numeric(year) # convert year vector to numeric
+
+# Clean the actor data
+actor <- gsub(pattern = "^\\s*Starring:|\\s+", replacement = "", x = actor)
+  # remove leading whitespace, "Starring:", and trailing whitespace
+
+# Clean the links data
+links <- gsub("^//", "", links) # remove double slashes at the beginning of the link
+
+```
+
+After obtaining the exact links for each movie, the next step is to extract the genre information using a for loop in R. This iterative process ensures that the genre information is retrieved for each TV series by accessing their respective URLs and extracting the relevant content using XPath expressions. One challenge that arises during the extraction of genre information is that all the information is presented in the same HTML attributes and class. To overcome this challenge, I utilize XPath expressions to navigate and extract the genre information from the HTML content.
+
+```{r, results='hide'}
+
+# Extract the series' genre
+
+# Create an empty list to store the genre information for each TV series
+genre_list <- list()
+
+for (i in links) {
+  genre_url <- i
+  
+  Sys.sleep(1) # Add a delay to reduce the request frequency
+
+  genre_html <- GET(genre_url) # Send an HTTP request to the TV series URL
+  genre_html <- htmlParse(content(genre_html, as = "text"), encoding = "UTF-8") # retrieve the TV series page content
+    
+    # Extract the genre information for the TV series
+    genre <- xpathSApply(genre_html, "//*[@id='series-info']/div/ul/li[b[contains(text(),'Genre:')]]/span", xmlValue)
+    
+     # Add the genre information to the genre_list
+    genre_list[[i]] <- genre
+    
+    # Combine the genres in genre_list into a single vector
+    genre <- unlist(genre_list)
+    
+  }
+
+```
+
+Specifically, I target the &lt;ul&gt; element that resides under the &lt;div id=&quot;series-info&quot;&gt; container. This &lt;ul&gt; element contains a list of &lt;li&gt; elements, each representing a different attribute of the TV series. Within these &lt;li&gt; elements, I look for the one that has a &lt;b&gt; element containing the text 'Genre:'. Once this element is located, I extract the text within the corresponding &lt;span&gt; element, which represents the genre information.
+
+By applying this approach within the for loop, I can extract the genre information for each TV series individually, ensuring that the genre data is retrieved accurately from the corresponding subpages. This process allows me to gather comprehensive genre information for all the Netflix series listed on the webpage, facilitating further analysis.
+
+## Results and outputs
+
+After processing and combining the extracted information, the data was stored in a data frame. This data frame provides a comprehensive overview of the top 100 Netflix series, including their titles, years, genres, rankings, TMeterScores, actors and links.
+
+```{r, results='hide'}
+
+# Combine the extracted data into a data frame
+df <- data.frame(
+  Title = title, # The title of the Netflix series
+  Year = year, # The year of release for the series
+  Genre = genre, # The genre(s) of the series
+  Ranking = ranking, # The ranking of the series on the Rotten Tomatoes list
+  TMeterScore = tMeterScore, # The Tomatometer score of the series
+  Actors = actor, # The actors starring in the series
+  Links = links # The link to the Rotten Tomatoes page of the series
+)
+
+row.names(df) <- 1 : 100
+
+# Print the data frame
+print(df)
+
+```
+
+**Data Visualization**
+
+After organizing the data, I conducted the analysis and visualization using the ggplot2 package. This plot focused on calculating the frequency of each genre in the top 100 Netflix series. By sorting the genre frequencies in descending order, I created a bar plot to visualize the distribution of genres.
+
+```{r, results='hide'}
+
+library(ggplot2)
+
+# Sort genre frequencies in descending order
+sorted_genre <- sort(table(df$Genre), decreasing = TRUE)
+
+# Convert sorted_genre to a data frame
+genre_df <- data.frame(Genre = names(sorted_genre), Frequency = as.numeric(sorted_genre))
+
+# Reorder genres based on frequency (from highest to lowest)
+genre_df$Genre <- reorder(genre_df$Genre, genre_df$Frequency, FUN = function(x) -sum(x))
+
+```
+
+```{r}
+
+# Create a bar plot
+ggplot(genre_df, aes(x = Genre, y = Frequency)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  geom_text(aes(label = Frequency), vjust = -0.5, color = "black", size = 3) +
+  xlab("Genre") +
+  ylab("Frequency") +
+  ggtitle("Genre Frequency") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+This distribution provides valuable insights into the genre preferences of the top 100 Netflix series according to Rotten Tomatoes. The most prevalent genres among these series are Drama and Comedy, followed by Crime and Kids family. It is also interesting to note the presence of various genres such as Action, History, Mystery thriller, Sci fi, Adventure, Fantasy, Horror, Documentary, Biography, Holiday, Other, and Romance, though they are represented in smaller frequencies. By analyzing the genre distribution, content creators and viewers can gain a better understanding of the popular genres on Netflix and potentially discover new series within their preferred genres.
