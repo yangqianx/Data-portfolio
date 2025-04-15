@@ -32,11 +32,6 @@ BA in Fashion Design and Communication, Shanghai Institute of Visual Arts, Sep 2
 
 ---
 
-## **📜 Certificates**
-✅ Google Data Analytics Professional Certificate (Coursera - Google)  
-
----
-
 ## **📬 Contact Me**
 📌 **LinkedIn:** [Yang Qian](https://www.linkedin.com/in/yangqian86)  
 📌 **Email:** yang.qian2025@gmail.com 
