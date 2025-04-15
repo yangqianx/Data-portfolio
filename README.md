@@ -1,4 +1,4 @@
-# Yang Qian - Data Analysis Project
+# Yang Qian - Portfolio
 
 ## **👋 About Me**
 Hi, I am Yang! I have a Master’s degree in Computational Social Science in Linköping University, specializing in R, SQL, Python (Pandas, NumPy), and Tableau, Power BI for data analysis and visualization. Experienced in data modeling, A/B testing, and statistical analysis. Passionate about transforming raw data into strategic insights to support business decisions. In my free time, I enjoy exploring new data analysis tools and expanding my knowledge. Whether working in a team or independently, I love discovering insights and solving complex problems with data. This repository showcases my skills, projects, and tracks my progress in Data Analytics & Data Science.
