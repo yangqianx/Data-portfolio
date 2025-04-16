@@ -15,7 +15,7 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC-EIL), this proj
 
 ## Key Results
 
-![Monthly Post Count](images/Number of the posts posted per month from March 2019 to March 2021.png)
+![Monthly Post Count](images/Number%20of%20the%20posts%20posted%20per%20month%20from%20March%202019%20to%20March%202021.png)
 
 ![Sentiment Trend](images/sentiment_trend.png)
 
