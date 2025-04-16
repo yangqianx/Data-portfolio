@@ -15,6 +15,10 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC-EIL), this proj
 
 ## Key Results
 
+![Number of the posts posted per month from March 2019 to March 2021](images/Number of the posts posted per month from March 2019 to March 2021.png)
+
+![Sentiment Trend](images/sentiment_trend.png)
+
 - **Topic Timeline:** Motivation-related discussions peaked mid-2020.
 - **Sentiment Distribution:** Positive sentiment dominates, but negative sentiment grew slightly post-pandemic outbreak.
 - **Emotion Breakdown:** Anticipation was the most frequent emotion, followed by fear and joy.
