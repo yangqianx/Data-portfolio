@@ -1,6 +1,6 @@
 # Reddit NLP Analysis: Weight Loss Discussions During the COVID-19 Pandemic
 
-## 📌 Project Overview
+## Project Overview
 
 This project explores how weight loss discussions and sentiments evolved on Reddit during the COVID-19 pandemic. It focuses on posts from the subreddit [r/loseit](https://www.reddit.com/r/loseit), analyzing 35,000+ submissions from March 2019 to March 2021.
 
@@ -15,7 +15,7 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC), this project 
 
 ---
 
-## 🔧 Tools & Technologies
+## Tools & Technologies
 
 **Languages & Libraries:**
 
@@ -30,7 +30,7 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC), this project 
 
 ---
 
-## 🗃️ Project Structure
+## Project Structure
 
 | File | Description |
 |------|-------------|
@@ -46,7 +46,7 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC), this project 
 
 ---
 
-## 📊 Key Results
+## Key Results
 
 - **Topic Timeline:** Motivation-related discussions peaked mid-2020.
 - **Sentiment Distribution:** Positive sentiment dominates, but negative sentiment grew slightly post-pandemic outbreak.
