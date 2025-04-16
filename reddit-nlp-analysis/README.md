@@ -11,8 +11,13 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC), this project 
 - **Sentiment dynamics**: Predominantly positive sentiment overall, but a slight increase in negative emotions was observed during the pandemic period.
 - **Emotion analysis**: Common emotions expressed included *anticipation* and *fear*, with variation across topics.
 
-> 💡 These findings highlight the nuanced emotional landscape of weight loss discourse online during a global crisis.
+---
 
+## Key Results
+
+- **Topic Timeline:** Motivation-related discussions peaked mid-2020.
+- **Sentiment Distribution:** Positive sentiment dominates, but negative sentiment grew slightly post-pandemic outbreak.
+- **Emotion Breakdown:** Anticipation was the most frequent emotion, followed by fear and joy.
 ---
 
 ## Tools & Technologies
@@ -30,7 +35,7 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC), this project 
 
 ---
 
-## Project Structure
+## Data Structure
 
 | File | Description |
 |------|-------------|
@@ -43,11 +48,3 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC), this project 
 | `lda_submissions.csv` | Topic results |
 | `vader_submissions.csv` | VADER sentiment results |
 | `nrc_submissions.csv` | NRC emotion results |
-
----
-
-## Key Results
-
-- **Topic Timeline:** Motivation-related discussions peaked mid-2020.
-- **Sentiment Distribution:** Positive sentiment dominates, but negative sentiment grew slightly post-pandemic outbreak.
-- **Emotion Breakdown:** Anticipation was the most frequent emotion, followed by fear and joy.
