@@ -19,7 +19,7 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC-EIL), this proj
 
 ![LDA Topic Modeling Result](images/The%20Result%20of%20Topic%20Modeling%20(LDA).png)
 
-![Monthly Topic Proportion](images/monthly_topics_themes_a.png)
+![Monthly Topic Proportion of topics in the Themes (a)](images/Monthly%20posts%20proportion%20of%20topics%20in%20the%20Themes%20%28a%29.png)
 
 ![Monthly posts proportion of topics in the Themes (b)](images/Monthly%20posts%20proportion%20of%20topics%20in%20the%20Themes%20%28b%29.png)
 
