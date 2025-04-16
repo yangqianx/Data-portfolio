@@ -4,7 +4,7 @@
 
 This project explores how weight loss discussions and sentiments evolved on Reddit during the COVID-19 pandemic. It focuses on posts from the subreddit [r/loseit](https://www.reddit.com/r/loseit), analyzing 35,000+ submissions from March 2019 to March 2021.
 
-Using topic modeling (LDA) and sentiment analysis (VADER and NRC), this project reveals:
+Using topic modeling (LDA) and sentiment analysis (VADER and NRC-EIL), this project reveals:
 
 - **5 main topic categories**: Weight Management, Diet, Physical Exercise, Emotions & Support, and Appearance.
 - **16 topics** were detected, with notable changes over time in motivation, calorie tracking, and weight change discussions.
