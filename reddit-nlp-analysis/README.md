@@ -1,4 +1,4 @@
-# Reddit NLP Analysis: Weight Loss Discussions During the COVID-19 Pandemic
+# Reddit NLP Analysis: Weight Loss Discussions During the Pandemic
 
 ## Project Overview
 
