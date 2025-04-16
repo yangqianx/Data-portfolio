@@ -1,0 +1,135 @@
+---
+title: "The 100 Best Netflix Series in Rotten Tomatoes"
+output: pdf_document
+---
+
+```{r setup, include=FALSE, echo=FALSE, message=FALSE, error=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Data Extraction**
+
+```{r, results='hide'}
+
+library(httr)
+library(XML)
+
+# Send a GET request to the rottentomatoes webpage
+url <- "https://editorial.rottentomatoes.com/guide/best-netflix-shows-and-movies-to-binge-watch-now/"
+response <- GET(url)
+
+# Parse the HTML content of the webpage
+html <- htmlParse(response)
+
+# Extract the Netflix series' title, year, actor, link, ranking and tMeterScore.
+
+# Extract the series' title
+title <- xpathSApply(html, "//div[@class='article_movie_title']/h2/a", xmlValue)
+
+# Extract the series' year
+year <- xpathSApply(html, "//div[@class='article_movie_title']/h2/span[@class='subtle start-year']", xmlValue)
+
+# Extract the series' actor
+actor <- xpathSApply(html, "//div[@class='info cast']", xmlValue)
+
+# Extract the series' link
+links <- xpathSApply(html, "//div[@class='article_movie_title']/h2/a/@href")
+
+# Extract the series' ranking
+ranking <- xpathSApply(html, "//div[@class='countdown-index']", xmlValue)
+
+# Extract the series' tMeterScore
+tMeterScore <- xpathSApply(html, "//div[@class='article_movie_title']/h2/span[@class='tMeterScore']", xmlValue)
+
+```
+
+**Data Manipulation**
+
+```{r, results='hide'}
+
+# Use regexes to clean the data
+
+# Clean the year data
+year <- gsub("\\D", "", year) # remove the parentheses of the year
+year <- as.numeric(year) # convert year vector to numeric
+
+# Clean the actor data
+actor <- gsub(pattern = "^\\s*Starring:|\\s+", replacement = "", x = actor)
+  # remove leading whitespace, "Starring:", and trailing whitespace
+
+# Clean the links data
+links <- gsub("^//", "", links) # remove double slashes at the beginning of the link
+
+# Extract the series' genre
+
+# Create an empty list to store the genre information for each TV series
+genre_list <- list()
+
+for (i in links) {
+  genre_url <- i
+  
+  Sys.sleep(1) # Add a delay to reduce the request frequency
+
+  genre_html <- GET(genre_url) # Send an HTTP request to the TV series URL
+  genre_html <- htmlParse(content(genre_html, as = "text"), encoding = "UTF-8") # retrieve the TV series page content
+    
+    # Extract the genre information for the TV series
+    genre <- xpathSApply(genre_html, "//*[@id='series-info']/div/ul/li[b[contains(text(),'Genre:')]]/span", xmlValue)
+    
+     # Add the genre information to the genre_list
+    genre_list[[i]] <- genre
+    
+    # Combine the genres in genre_list into a single vector
+    genre <- unlist(genre_list)
+    
+  }
+
+```
+
+## Results and outputs
+
+```{r, results='hide'}
+
+# Combine the extracted data into a data frame
+df <- data.frame(
+  Title = title, # The title of the Netflix series
+  Year = year, # The year of release for the series
+  Genre = genre, # The genre(s) of the series
+  Ranking = ranking, # The ranking of the series on the Rotten Tomatoes list
+  TMeterScore = tMeterScore, # The Tomatometer score of the series
+  Actors = actor, # The actors starring in the series
+  Links = links # The link to the Rotten Tomatoes page of the series
+)
+
+row.names(df) <- 1 : 100
+
+# Print the data frame
+print(df)
+
+```
+
+**Data Visualization**
+
+```{r, results='hide'}
+
+library(ggplot2)
+
+# Sort genre frequencies in descending order
+sorted_genre <- sort(table(df$Genre), decreasing = TRUE)
+
+# Convert sorted_genre to a data frame
+genre_df <- data.frame(Genre = names(sorted_genre), Frequency = as.numeric(sorted_genre))
+
+# Reorder genres based on frequency (from highest to lowest)
+genre_df$Genre <- reorder(genre_df$Genre, genre_df$Frequency, FUN = function(x) -sum(x))
+
+# Create a bar plot
+ggplot(genre_df, aes(x = Genre, y = Frequency)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  geom_text(aes(label = Frequency), vjust = -0.5, color = "black", size = 3) +
+  xlab("Genre") +
+  ylab("Frequency") +
+  ggtitle("Genre Frequency") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
