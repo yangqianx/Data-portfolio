@@ -17,11 +17,20 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC-EIL), this proj
 
 ![Monthly Post Count](images/Number%20of%20the%20posts%20posted%20per%20month%20from%20March%202019%20to%20March%202021.png)
 
-![Sentiment Trend](images/sentiment_trend.png)
+![LDA Topic Modeling Result](images/The%20Result%20of%20Topic%20Modeling%20(LDA).png)
 
-- **Topic Timeline:** Motivation-related discussions peaked mid-2020.
-- **Sentiment Distribution:** Positive sentiment dominates, but negative sentiment grew slightly post-pandemic outbreak.
-- **Emotion Breakdown:** Anticipation was the most frequent emotion, followed by fear and joy.
+![Monthly Topic Proportion](images/monthly_topics_themes_a.png)
+
+![Monthly posts proportion of topics in the Themes (b)](images/Monthly%20posts%20proportion%20of%20topics%20in%20the%20Themes%20%28b%29.png)
+
+![Number of posts of sentiments (positive, negative, netural) trends over time](images/Number%20of%20posts%20of%20sentiments%20%28positive%2C%20negative%2C%20netural%29%20trends%20over%20time.png)
+
+![Proportions of sentiments polarity (positive, negative, netual) by topics across two time periods](images/Proportions%20of%20sentiments%20polarity%20%28positive%2C%20negative%2C%20netual%29%20by%20topics%20across%20two%20time%20periods.png)
+
+![Proportion of words associated with eight emotions by topics before the pandemic](Proportion%20of%20words%20associated%20with%20eight%20emotions%20by%20topics%20before%20the%20pandemic.png)
+
+![Proportion of words associated with eight emotions by topics before the pandemic](Proportion%20of%20words%20associated%20with%20eight%20emotions%20by%20topics%20during%20the%20pandemic.png)
+
 ---
 
 ## Tools & Technologies
