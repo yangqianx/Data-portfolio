@@ -27,9 +27,9 @@ Using topic modeling (LDA) and sentiment analysis (VADER and NRC-EIL), this proj
 
 ![Proportions of sentiments polarity (positive, negative, netual) by topics across two time periods](images/Proportions%20of%20sentiments%20polarity%20%28positive%2C%20negative%2C%20netual%29%20by%20topics%20across%20two%20time%20periods.png)
 
-![Proportion of words associated with eight emotions by topics before the pandemic](Proportion%20of%20words%20associated%20with%20eight%20emotions%20by%20topics%20before%20the%20pandemic.png)
+![Proportion of words associated with eight emotions by topics before the pandemic](images/Proportion%20of%20words%20associated%20with%20eight%20emotions%20by%20topics%20before%20the%20pandemic.png)
 
-![Proportion of words associated with eight emotions by topics before the pandemic](Proportion%20of%20words%20associated%20with%20eight%20emotions%20by%20topics%20during%20the%20pandemic.png)
+![Proportion of words associated with eight emotions by topics before the pandemic](images/Proportion%20of%20words%20associated%20with%20eight%20emotions%20by%20topics%20during%20the%20pandemic.png)
 
 ---
 
