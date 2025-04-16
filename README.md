@@ -8,7 +8,7 @@ Hi, I am Yang! A recent graduate in Computational Social Science with 3+ years o
 Here are my projects:
 
 - [Reddit NLP Analysis](https://github.com/Joeyy886/Portfolio/tree/main/reddit-nlp-analysis): Sentiment & topic modeling on 35,000+ Reddit posts related to weight loss.
-- [Netflix Trends Analysis](https://github.com/Joeyy886/Portfolio/tree/main/netflix_trends_analysis): Built Power BI dashboards analyzing top Netflix series trends.
+- [Netflix Trend Analysis](https://github.com/Joeyy886/Portfolio/tree/main/netflix_trends_analysis): Built Power BI dashboards analyzing top Netflix series trends.
 
 ---
 
