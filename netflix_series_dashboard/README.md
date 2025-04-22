@@ -31,10 +31,7 @@ The project starts by scraping the top 100 Netflix series data from the Rotten T
 - **Links**: Link to the individual Rotten Tomatoes page
 
 ### Data Cleaning and Manipulation
-Once the data is extracted, it's cleaned to remove unwanted characters, handle missing values, and format the data for further analysis. This includes:
-- Cleaning the year and actor data
-- Removing unnecessary characters from text fields
-- Structuring the genre data for easier analysis
+Once the data is extracted, it's cleaned to remove unwanted characters, handle missing values, and format the data for further analysis.
 
 ### Data Visualization
 The final dataset is imported into Power BI for visualization. Key visualizations include:
