@@ -107,29 +107,3 @@ row.names(df) <- 1 : 100
 print(df)
 
 ```
-
-**Data Visualization**
-
-```{r, results='hide'}
-
-library(ggplot2)
-
-# Sort genre frequencies in descending order
-sorted_genre <- sort(table(df$Genre), decreasing = TRUE)
-
-# Convert sorted_genre to a data frame
-genre_df <- data.frame(Genre = names(sorted_genre), Frequency = as.numeric(sorted_genre))
-
-# Reorder genres based on frequency (from highest to lowest)
-genre_df$Genre <- reorder(genre_df$Genre, genre_df$Frequency, FUN = function(x) -sum(x))
-
-# Create a bar plot
-ggplot(genre_df, aes(x = Genre, y = Frequency)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  geom_text(aes(label = Frequency), vjust = -0.5, color = "black", size = 3) +
-  xlab("Genre") +
-  ylab("Frequency") +
-  ggtitle("Genre Frequency") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-```
