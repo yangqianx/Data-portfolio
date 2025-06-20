@@ -1,23 +1,14 @@
-## Yang Qian - Portfolio
+## Yang's data Portfolio
 
-Hi, I am Yang! A recent graduate in Computational Social Science with 3+ years of experience in digital marketing. This portfolio showcases my academic and personal projects in data analysis, visualization, and business intelligence.
+Hi, I am Yang! Welcome to my data portfolio. Here, I document a summary of my projects in the multiple fields.
 
 ---
 
 ## **Projects**
 Here are my projects:
 
-- [Reddit NLP Analysis](https://github.com/Joeyy886/Portfolio/tree/main/reddit-nlp-analysis): Sentiment & topic modeling on 35,000+ Reddit posts related to weight loss.
-- [Netflix Series Dashboard](https://github.com/Joeyy886/Portfolio/tree/main/netflix_series_dashboard): Built Power BI dashboards analyzing top Netflix series trends.
-
----
-
-## **Education**
-Master of Science in Computational Social Science, Linköping University, Aug 2022 - Oct 2024  
-BA in Fashion Design and Communication, Shanghai Institute of Visual Arts, Sep 2012 - Jun 2016
-
----
-
-## **Contact Me**
-📌 **LinkedIn:** [Yang Qian](https://www.linkedin.com/in/yangqian86)  
-📌 **Email:** yang.qian2025@gmail.com 
+| Project Link | Area of Analysis | Project Description | 
+|---|---|---|
+| 💡 [Reddit NLP Analysis](https://github.com/Joeyy886/Portfolio/tree/main/reddit-nlp-analysis)| Data analysis, data cleaning, data transformation. It showcases my ability to tackle various SQL challenges and demonstrates my proficiency in SQL query writing and problem-solving skills. | 
+| 👩🏻‍⚕️ [Netflix Series Dashboard](https://github.com/Joeyy886/Portfolio/tree/main/netflix_series_dashboard)| Health analysis | I answer business questions related to patients data, such as average and median measurements per user, types of measurements for active users, and median blood pressure values for users.
+| 🦠 [Netflix Series Dashboard](https://github.com/Joeyy886/Portfolio/tree/main/netflix_series_dashboard)| Data cleaning, data analysis | A project close to 🏡 home.
