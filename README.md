@@ -1,4 +1,4 @@
-## Yang's data Portfolio
+# Yang's Portfolio
 
 Hi, I am Yang! Welcome to my data portfolio. Here, I document a summary of my projects in the multiple fields.
 
